@@ -1,7 +1,7 @@
 {
   "server": "hub.browserstack.com",
-  "user": "manirajm_DidOIK",
-  "key": "UiWkMZmvXNj25XPkzYB8",
+  "user": "rajagajula_NWM17Z",
+  "key": "NX8dFKvyXN3SjyuADD4K",
   "capabilities": {
     "build": "browserstack-build-1",
     "name": "parallel_test",
