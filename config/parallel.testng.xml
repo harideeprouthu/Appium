@@ -1,30 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Parallel" thread-count="3" parallel="tests">
+<suite name="Parallel" thread-count="2" parallel="tests">
 	<listeners>
         <listener class-name="com.influxdb.InfluxDBListener" />
     </listeners>
 	<test name="SingleTestChrome">
-    <parameter name="config" value="parallel.conf.json"/>
+    <parameter name="config" value="lads.conf.json"/>
     <parameter name="environment" value="chrome"/>
     <classes>
-      <class name="com.ladbrokes.BrowserStackTest"/>
+      <class name="com.ladbrokes.LadbrokesProduction"/>
+    </classes>
+	</test>
+	
+	<test name="CoralTest">
+	    <parameter name="config" value="coral.conf.json"/>
+	    <parameter name="environment" value="chrome"/>
+	    <classes>
+	      <class name="com.ladbrokes.CoralProduction"/>
+	    </classes>
+	</test>
+	
+	<test name="BwincomTest">
+	    <parameter name="config" value="bwincom.conf.json"/>
+	    <parameter name="environment" value="chrome"/>
+	    <classes>
+	      <class name="com.ladbrokes.Bwincom"/>
+	    </classes>
+	</test>
+	
+	<test name="BwinptTest">
+	    <parameter name="config" value="bwincom.conf.json"/>
+	    <parameter name="environment" value="chrome"/>
+	    <classes>
+	      <class name="com.ladbrokes.Bwinpt"/>
+	    </classes>
+	</test>
+
+	<test name="MibetmgmTest">
+    <parameter name="config" value="mibetmgm.conf.json"/>
+    <parameter name="environment" value="chrome"/>
+    <classes>
+      <class name="com.ladbrokes.Mibetmgmcomensports"/>
     </classes>
 	</test>
 
-	<!-- <test name="SingleTestFirefox">
-    <parameter name="config" value="parallel.conf.json"/>
-    <parameter name="environment" value="firefox"/>
+	<test name="NybetmgmTest">
+    <parameter name="config" value="nybetmgm.conf.json"/>
+    <parameter name="environment" value="chrome"/>
     <classes>
-      <class name="com.browserstack.SingleTest"/>
+      <class name="com.ladbrokes.Nybetmgmcomensports"/>
+    </classes>
+	</test>
+	
+	<test name="sportingbetcomenTest">
+    <parameter name="config" value="sportingbetcomensports.conf.json"/>
+    <parameter name="environment" value="chrome"/>
+    <classes>
+      <class name="com.ladbrokes.Sportingbetcomensports"/>
     </classes>
 	</test>
 
-	<test name="SingleTestSafari">
-    <parameter name="config" value="parallel.conf.json"/>
-    <parameter name="environment" value="safari"/>
+	<test name="SportingbetcozaTest">
+    <parameter name="config" value="sportingbetcozaensports.conf.json"/>
+    <parameter name="environment" value="chrome"/>
     <classes>
-      <class name="com.browserstack.SingleTest"/>
+      <class name="com.ladbrokes.Sportingbetcozaensports"/>
     </classes>
-	</test> -->
+	</test>
 </suite>

@@ -48,10 +48,11 @@ public class InfluxDBListener implements ITestListener {
   }
 
   private void postTestClassStatus(ITestContext iTestContext) {
-	Point point = Point.measurement("appiumclass").time(System.currentTimeMillis(), TimeUnit.MILLISECONDS)
+	Point point = Point.measurement(iTestContext.getAttribute("tableName").toString()).time(System.currentTimeMillis(), TimeUnit.MILLISECONDS)
         .tag("name", iTestContext.getAllTestMethods()[0].getTestClass().getName())
         .addField("duration", (iTestContext.getEndDate().getTime() - iTestContext.getStartDate().getTime()))
         .field("lcp",  iTestContext.getAttribute("lcp_value"))
+        .field("lcp2",  iTestContext.getAttribute("lcp_value2"))
         .field("dashboard_url",  iTestContext.getAttribute("dashboard_url"))
         .build();
 	System.out.println(point.toString());

@@ -1,0 +1,18 @@
+{
+  "server": "hub.browserstack.com",
+  "user": "rajagajula_NWM17Z",
+  "key": "NX8dFKvyXN3SjyuADD4K",
+  "capabilities": {
+    "build": "browserstack-build-1",
+    "name": "Mibetmgm",
+    "browserstack.debug": true
+  },
+  "environments": {
+    "env1": {
+      "device": "Samsung Galaxy S22 Plus",
+      "os_version": "12.0",
+      "browserName": "android",
+      "realMobile": "true"
+    }
+  }
+}
