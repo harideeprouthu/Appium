@@ -21,6 +21,7 @@ import org.testng.annotations.Test;
 
 import com.browserstack.local.Local;
 import com.codeborne.selenide.WebDriverRunner;
+import com.ladbrokes.utils.Constants;
 
 public class Bwinpt {
 	public RemoteWebDriver driver;
@@ -47,6 +48,9 @@ public class Bwinpt {
 		capabilities.setCapability("browserstack.networkLogsOptions", networkLogsOptions);
 		
 		capabilities.setCapability("browserstack.maskCommands", "setValues, getValues, setCookies, getCookies");
+		capabilities.setCapability("browserstack.geoLocation", "GB");
+		capabilities.setCapability("browserstack.networkProfile", "4g-lte-good");
+		capabilities.setCapability("name", "BwinPt");
 
 		
 		Map<String, String> envCapabilities = (Map<String, String>) innerJson;
@@ -67,12 +71,12 @@ public class Bwinpt {
 			}
 		}
 
-		username = System.getenv("rajagajula_NWM17Z");
+		username = System.getenv(Constants.USERNAME);
 		if (username == null) {
 			username = (String) config.get("user");
 		}
 
-		accessKey = System.getenv("NX8dFKvyXN3SjyuADD4K");
+		accessKey = System.getenv(Constants.PASSWORD);
 		if (accessKey == null) {
 			accessKey = (String) config.get("key");
 		}
@@ -117,7 +121,6 @@ public class Bwinpt {
 		driver.get("https://sports.bwin.pt/pt/sports");
 		
 		JavascriptExecutor executor = (JavascriptExecutor) driver;
-		System.out.println("Title: " + driver.getTitle());
 		if (driver.getTitle().equals("Apostas desportivas | bwin")) {
 	    	executor.executeScript("browserstack_executor: {\"action\": \"setSessionStatus\", \"arguments\": {\"status\": \"passed\", \"reason\": \"Title matched!\"}}");
 	    }
@@ -135,16 +138,19 @@ public class Bwinpt {
 		long lpp = (new Double(parseDouble)).longValue();
 		context.setAttribute("lcp_value", lpp);
 		
-		driver.get("https://sports.bwin.pt/pt/sports");
-		String lcp2 = "function test1() {" +
-		           "const po = new PerformanceObserver(() => {});po.observe({type: 'largest-contentful-paint', buffered: true});" +
-				"const lastEntry = po.takeRecords().slice(-1)[0];" +
-		            "return lastEntry.renderTime || lastEntry.loadTime;" +
-		           "}; return test1()";
-		
-		executeScript = executor.executeScript(lcp2);
-		double parsDou2 = Double.parseDouble(executeScript.toString());
-		long secondlpp = (new Double(parsDou2)).longValue();
-		context.setAttribute("lcp_value2", secondlpp);
+//		System.out.println("");
+//		System.out.println("");
+//		driver.get("https://sports.bwin.pt/pt/sports");
+//		String lcp2 = "function test1() {" +
+//		           "const po = new PerformanceObserver(() => {});po.observe({type: 'largest-contentful-paint', buffered: true});" +
+//				"const lastEntry = po.takeRecords().slice(-1)[0];" +
+//		            "return lastEntry.renderTime || lastEntry.loadTime;" +
+//		           "}; return test1()";
+//		if(lcp2 != null) {
+//			executeScript = executor.executeScript(lcp2);
+//			double parsDou2 = Double.parseDouble(executeScript.toString());
+//			long secondlpp = (new Double(parsDou2)).longValue();
+//			context.setAttribute("lcp_value2", secondlpp);
+//		}
 	}
 }

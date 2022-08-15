@@ -5,7 +5,7 @@
         <listener class-name="com.influxdb.InfluxDBListener" />
     </listeners>
 	<test name="SingleTestChrome">
-    <parameter name="config" value="lads.conf.json"/>
+    <parameter name="config" value="common.conf.json"/>
     <parameter name="environment" value="chrome"/>
     <classes>
       <class name="com.ladbrokes.LadbrokesProduction"/>
@@ -13,7 +13,7 @@
 	</test>
 	
 	<test name="CoralTest">
-	    <parameter name="config" value="coral.conf.json"/>
+	    <parameter name="config" value="common.conf.json"/>
 	    <parameter name="environment" value="chrome"/>
 	    <classes>
 	      <class name="com.ladbrokes.CoralProduction"/>
@@ -21,7 +21,7 @@
 	</test>
 	
 	<test name="BwincomTest">
-	    <parameter name="config" value="bwincom.conf.json"/>
+	    <parameter name="config" value="common.conf.json"/>
 	    <parameter name="environment" value="chrome"/>
 	    <classes>
 	      <class name="com.ladbrokes.Bwincom"/>
@@ -29,7 +29,7 @@
 	</test>
 	
 	<test name="BwinptTest">
-	    <parameter name="config" value="bwincom.conf.json"/>
+	    <parameter name="config" value="common.conf.json"/>
 	    <parameter name="environment" value="chrome"/>
 	    <classes>
 	      <class name="com.ladbrokes.Bwinpt"/>
@@ -37,7 +37,7 @@
 	</test>
 
 	<test name="MibetmgmTest">
-    <parameter name="config" value="mibetmgm.conf.json"/>
+    <parameter name="config" value="common.conf.json"/>
     <parameter name="environment" value="chrome"/>
     <classes>
       <class name="com.ladbrokes.Mibetmgmcomensports"/>
@@ -45,7 +45,7 @@
 	</test>
 
 	<test name="NybetmgmTest">
-    <parameter name="config" value="nybetmgm.conf.json"/>
+    <parameter name="config" value="common.conf.json"/>
     <parameter name="environment" value="chrome"/>
     <classes>
       <class name="com.ladbrokes.Nybetmgmcomensports"/>
@@ -53,7 +53,7 @@
 	</test>
 	
 	<test name="sportingbetcomenTest">
-    <parameter name="config" value="sportingbetcomensports.conf.json"/>
+    <parameter name="config" value="common.conf.json"/>
     <parameter name="environment" value="chrome"/>
     <classes>
       <class name="com.ladbrokes.Sportingbetcomensports"/>
@@ -61,7 +61,7 @@
 	</test>
 
 	<test name="SportingbetcozaTest">
-    <parameter name="config" value="sportingbetcozaensports.conf.json"/>
+    <parameter name="config" value="common.conf.json"/>
     <parameter name="environment" value="chrome"/>
     <classes>
       <class name="com.ladbrokes.Sportingbetcozaensports"/>

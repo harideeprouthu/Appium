@@ -21,6 +21,7 @@ import org.testng.annotations.Test;
 
 import com.browserstack.local.Local;
 import com.codeborne.selenide.WebDriverRunner;
+import com.ladbrokes.utils.Constants;
 
 public class Sportingbetcozaensports {
 	public RemoteWebDriver driver;
@@ -47,6 +48,9 @@ public class Sportingbetcozaensports {
 		capabilities.setCapability("browserstack.networkLogsOptions", networkLogsOptions);
 		
 		capabilities.setCapability("browserstack.maskCommands", "setValues, getValues, setCookies, getCookies");
+		capabilities.setCapability("browserstack.geoLocation", "GB");
+		capabilities.setCapability("browserstack.networkProfile", "4g-lte-good");
+		capabilities.setCapability("name", "SportingbetcoZA");
 
 		
 		Map<String, String> envCapabilities = (Map<String, String>) innerJson;
@@ -67,12 +71,12 @@ public class Sportingbetcozaensports {
 			}
 		}
 
-		username = System.getenv("rajagajula_NWM17Z");
+		username = System.getenv(Constants.USERNAME);
 		if (username == null) {
 			username = (String) config.get("user");
 		}
 
-		accessKey = System.getenv("NX8dFKvyXN3SjyuADD4K");
+		accessKey = System.getenv(Constants.PASSWORD);
 		if (accessKey == null) {
 			accessKey = (String) config.get("key");
 		}
@@ -134,16 +138,17 @@ public class Sportingbetcozaensports {
 		long lpp = (new Double(parseDouble)).longValue();
 		context.setAttribute("lcp_value", lpp);
 		
-		driver.get("https://sports.sportingbet.co.za/en/sports");
-		String lcp2 = "function test1() {" +
-		           "const po = new PerformanceObserver(() => {});po.observe({type: 'largest-contentful-paint', buffered: true});" +
-				"const lastEntry = po.takeRecords().slice(-1)[0];" +
-		            "return lastEntry.renderTime || lastEntry.loadTime;" +
-		           "}; return test1()";
-		
-		executeScript = executor.executeScript(lcp2);
-		double parsDou2 = Double.parseDouble(executeScript.toString());
-		long secondlpp = (new Double(parsDou2)).longValue();
-		context.setAttribute("lcp_value2", secondlpp);
+//		driver.get("https://sports.sportingbet.co.za/en/sports");
+//		String lcp2 = "function test1() {" +
+//		           "const po = new PerformanceObserver(() => {});po.observe({type: 'largest-contentful-paint', buffered: true});" +
+//				"const lastEntry = po.takeRecords().slice(-1)[0];" +
+//		            "return lastEntry.renderTime || lastEntry.loadTime;" +
+//		           "}; return test1()";
+//		if(lcp2 != null) {
+//			executeScript = executor.executeScript(lcp2);
+//			double parsDou2 = Double.parseDouble(executeScript.toString());
+//			long secondlpp = (new Double(parsDou2)).longValue();
+//			context.setAttribute("lcp_value2", secondlpp);
+//		}
 	}
 }

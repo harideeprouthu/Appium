@@ -21,6 +21,7 @@ import org.testng.annotations.Test;
 
 import com.browserstack.local.Local;
 import com.codeborne.selenide.WebDriverRunner;
+import com.ladbrokes.utils.Constants;
 
 public class CoralProduction {
 	public RemoteWebDriver driver;
@@ -30,7 +31,6 @@ public class CoralProduction {
 	public static String accessKey;
 	public static String sessionId;
 
-	@SuppressWarnings("unchecked")
 	@BeforeMethod(alwaysRun=true)
 	@Parameters(value={"config", "environment"})
 	public void setUp(String config_file, String environment, ITestContext context) throws Exception {
@@ -47,6 +47,9 @@ public class CoralProduction {
 		capabilities.setCapability("browserstack.networkLogsOptions", networkLogsOptions);
 		
 		capabilities.setCapability("browserstack.maskCommands", "setValues, getValues, setCookies, getCookies");
+		capabilities.setCapability("browserstack.geoLocation", "GB");
+		capabilities.setCapability("browserstack.networkProfile", "4g-lte-good");
+		capabilities.setCapability("name", "Coral");
 
 		
 		Map<String, String> envCapabilities = (Map<String, String>) innerJson;
@@ -67,12 +70,12 @@ public class CoralProduction {
 			}
 		}
 
-		username = System.getenv("rajagajula_NWM17Z");
+		username = System.getenv(Constants.USERNAME);
 		if (username == null) {
 			username = (String) config.get("user");
 		}
 
-		accessKey = System.getenv("NX8dFKvyXN3SjyuADD4K");
+		accessKey = System.getenv(Constants.PASSWORD);
 		if (accessKey == null) {
 			accessKey = (String) config.get("key");
 		}
@@ -117,7 +120,6 @@ public class CoralProduction {
 		driver.get("https://sports.coral.co.uk/");
 		
 		JavascriptExecutor executor = (JavascriptExecutor) driver;
-		System.out.println("Coral Production Title: " + driver.getTitle());
 		if (driver.getTitle().equals("UK Online Sports Betting & Odds with Coral Bookmakers")) {
 	    	executor.executeScript("browserstack_executor: {\"action\": \"setSessionStatus\", \"arguments\": {\"status\": \"passed\", \"reason\": \"Title matched!\"}}");
 	    }
@@ -135,16 +137,19 @@ public class CoralProduction {
 		long lpp = (new Double(parseDouble)).longValue();
 		context.setAttribute("lcp_value", lpp);
 		
-		driver.get("https://sports.coral.co.uk/");
-		String lcp2 = "function test1() {" +
-		           "const po = new PerformanceObserver(() => {});po.observe({type: 'largest-contentful-paint', buffered: true});" +
-				"const lastEntry = po.takeRecords().slice(-1)[0];" +
-		            "return lastEntry.renderTime || lastEntry.loadTime;" +
-		           "}; return test1()";
-		
-		executeScript = executor.executeScript(lcp2);
-		double parsDou2 = Double.parseDouble(executeScript.toString());
-		long secondlpp = (new Double(parsDou2)).longValue();
-		context.setAttribute("lcp_value2", secondlpp);
+//		System.out.println("");
+//		System.out.println("");
+//		driver.get("https://sports.coral.co.uk/");
+//		String lcp2 = "function test1() {" +
+//		           "const po = new PerformanceObserver(() => {});po.observe({type: 'largest-contentful-paint', buffered: true});" +
+//				"const lastEntry = po.takeRecords().slice(-1)[0];" +
+//		            "return lastEntry.renderTime || lastEntry.loadTime;" +
+//		           "}; return test1()";
+//		if(lcp2 != null) {
+//			executeScript = executor.executeScript(lcp2);
+//			double parsDou2 = Double.parseDouble(executeScript.toString());
+//			long secondlpp = (new Double(parsDou2)).longValue();
+//			context.setAttribute("lcp_value2", secondlpp);
+//		}
 	}
 }

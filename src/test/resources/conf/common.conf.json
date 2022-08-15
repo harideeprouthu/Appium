@@ -1,0 +1,17 @@
+{
+  "server": "hub.browserstack.com",
+  "user": "bala_gapV1R",
+  "key": "wVGbSpgNwyRMxEZJjZVp",
+  "capabilities": {
+    "build": "browserstack-build-1",
+    "browserstack.debug": true
+  },
+  "environments": {
+    "env1": {
+      "device": "Samsung Galaxy A51",
+      "os_version": "10.0",
+      "browserName": "android",
+      "realMobile": "true"
+    }
+  }
+}
