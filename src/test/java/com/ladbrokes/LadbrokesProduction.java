@@ -52,7 +52,7 @@ public class LadbrokesProduction {
 		capabilities.setCapability("browserstack.networkLogsOptions", networkLogsOptions);
 		
 		capabilities.setCapability("browserstack.maskCommands", "setValues, getValues, setCookies, getCookies");
-		capabilities.setCapability("browserstack.geoLocation", "GB");
+    	capabilities.setCapability("browserstack.geoLocation", "GB");
 		capabilities.setCapability("browserstack.networkProfile", "4g-lte-good");
 		capabilities.setCapability("name", "Ladbrokes");
 

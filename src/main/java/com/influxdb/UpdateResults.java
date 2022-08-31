@@ -7,11 +7,10 @@ import org.influxdb.dto.Point;
 
 public class UpdateResults {
 
-  private static final InfluxDB INFLXUDB = InfluxDBFactory.connect("http://10.102.97.210:8086", "root", "root");
-  private static final String DB_NAME = "Browserstack";
+  private static final InfluxDB INFLXUDB = InfluxDBFactory.connect(Constants.DB_URL, Constants.DB_USER_NAME, Constants.DB_PASSWORD);
 
   static {
-    INFLXUDB.setDatabase(DB_NAME);
+    INFLXUDB.setDatabase(Constants.DB_NAME);
   }
 
   public static void post(final Point point) {
